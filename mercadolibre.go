@@ -102,7 +102,9 @@ func main() {
 	//fmt.Println("Owners Name: " + dblists.Dblists[i].Owners[i].Name)
 	//fmt.Println("Owners Identification: " + dblists.Dblists[i].Owners[i].Identification)
 	//fmt.Println("Owners Email: " + dblists.Dblists[i].Owners[i].Email)
-	// ---------Mercado Libre Lectura mejorada => Error, no funciona -----------------------------
+	// ---------Mercado Libre Lectura mejorada => Error, no funciona -----------
+
+	// ---------Mercado Libre - Conexión a la base de datos --------------
 
 	fmt.Println("Establecienco conección MySQL - Base: mercadolibre")
 
@@ -110,7 +112,7 @@ func main() {
 	// I've set up a database on my local machine using phpmyadmin.
 	// The database is called mercadolibre
 	db, err := sql.Open("mysql", "root:admin0000@tcp(127.0.0.1:3306)/mercadolibre")
-	
+
 	// if there is an error opening the connection, handle it
 	if err != nil {
 		panic(err.Error())
@@ -120,6 +122,18 @@ func main() {
 	// defer the close till after the main function has finished
 	// executing
 	fmt.Println("Conección MySQL exitosa")
+
 	defer db.Close()
+
+	// perform a db.Query insert
+	insert, err := db.Query("INSERT INTO Test VALUES ('ConexionTest')")
+
+	// if there is an error inserting, handle it
+	if err != nil {
+		panic(err.Error())
+	}
+	// be careful deferring Queries if you are using transactions
+	fmt.Println("Texto insertado correctamente")
+	defer insert.Close()
 
 }
