@@ -3,10 +3,13 @@ package main
 // Como leer un json v1: Agregamos los paquetes: encoding/json; os; io/ioutil
 
 import (
+	"database/sql"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"os"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 // Como leer un json v1: Declaración de estructuras de acuerdo al archivo de ejemplo "users.json"
@@ -86,7 +89,7 @@ func main() {
 
 	fmt.Printf("Hola mundo cruel_Parate_3\n")
 
-	// Mercado Libre Lectura mejorada => Error, no funciona
+	// ---------Mercado Libre Lectura mejorada => Error, no funciona------------
 
 	// var dblists Dblists
 	// json.Unmarshal(byteValue, &dblists)
@@ -99,6 +102,24 @@ func main() {
 	//fmt.Println("Owners Name: " + dblists.Dblists[i].Owners[i].Name)
 	//fmt.Println("Owners Identification: " + dblists.Dblists[i].Owners[i].Identification)
 	//fmt.Println("Owners Email: " + dblists.Dblists[i].Owners[i].Email)
+	// ---------Mercado Libre Lectura mejorada => Error, no funciona -----------------------------
 
-	// Mercado Libre Lectura mejorada => Error, no funciona
+	fmt.Println("Establecienco conección MySQL - Base: mercadolibre")
+
+	// Open up our database connection.
+	// I've set up a database on my local machine using phpmyadmin.
+	// The database is called mercadolibre
+	db, err := sql.Open("mysql", "root:admin0000@tcp(127.0.0.1:3306)/mercadolibre")
+	
+	// if there is an error opening the connection, handle it
+	if err != nil {
+		panic(err.Error())
+		fmt.Println("ERROR en conección MySQL - Base: mercadolibre")
+	}
+
+	// defer the close till after the main function has finished
+	// executing
+	fmt.Println("Conección MySQL exitosa")
+	defer db.Close()
+
 }
