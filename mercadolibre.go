@@ -79,10 +79,26 @@ func main() {
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 
 	var result map[string]interface{}
+
 	json.Unmarshal([]byte(byteValue), &result)
 
 	fmt.Println(result["db_list"])
 
 	fmt.Printf("Hola mundo cruel_Parate_3\n")
 
+	// Mercado Libre Lectura mejorada => Error, no funciona
+
+	// var dblists Dblists
+	// json.Unmarshal(byteValue, &dblists)
+	// for i := 0; i < len(dblists.Dblists); i++ {
+	//fmt.Println("DB_Name: " + dblists.Dblists[i].Name)
+	//fmt.Println("DB_Time: " + dblists.Dblists[i].Time)
+	//fmt.Println("Confidentiality: " + dblists.Dblists[i].Classifications[i].Confidentiality)
+	//fmt.Println("Integrity: " + dblists.Dblists[i].Classifications[i].Integrity)
+	//fmt.Println("Availability: " + dblists.Dblists[i].Classifications[i].Availability)
+	//fmt.Println("Owners Name: " + dblists.Dblists[i].Owners[i].Name)
+	//fmt.Println("Owners Identification: " + dblists.Dblists[i].Owners[i].Identification)
+	//fmt.Println("Owners Email: " + dblists.Dblists[i].Owners[i].Email)
+
+	// Mercado Libre Lectura mejorada => Error, no funciona
 }
