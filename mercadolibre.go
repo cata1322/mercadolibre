@@ -11,7 +11,7 @@ import (
 
 // Como leer un json v1: Declaración de estructuras de acuerdo al archivo de ejemplo "users.json"
 
-// Users struct which contains an array of users
+// Example Users struct which contains an array of users
 type Users struct {
 	Users []User `json:"users"`
 }
@@ -21,7 +21,7 @@ type Dblists struct {
 	Dblists []Dblist `json:"db_list"`
 }
 
-// User struct which contains a name a type and a list of social links
+// Example User struct which contains a name a type and a list of social links
 type User struct {
 	Name   string `json:"name"`
 	Type   string `json:"type"`
@@ -38,7 +38,7 @@ type Dblist struct {
 	Time            string           `json:"time_stamp"`
 }
 
-// Social struct which contains a list of links
+// Example Social struct which contains a list of links
 type Social struct {
 	Facebook string `json:"facebook"`
 	Twitter  string `json:"twitter"`
